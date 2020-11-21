@@ -11,12 +11,15 @@ sudo vim /etc/sysconfig/selinux
 ### Change “SELINUX=enforcing” to “SELINUX=disabled”.
 ### Change, save the file and then Reboot the System
 ```
+```
 sudo Reboot
+```
 ```
 ### Download Prometheus package
 ### Go to official Prometheus downloads page, and copy the URL of the Linux “tar” file.
 
 ### Run the following command to download the package. Paste the copied URL after wget in the below command:
+```
 ```
 wget https://github.com/prometheus/prometheus/releases/download/v2.17.2/prometheus-2.17.2.linux-amd64.tar.gz
 ```
