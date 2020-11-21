@@ -1,23 +1,23 @@
-### Update System
+#### Update System
 ```
 sudo yum update -y
 ```
-### Disable SELinux
+#### Disable SELinux
 ```
 sudo vim /etc/sysconfig/selinux
 ```
-### Change “SELINUX=enforcing” to “SELINUX=disabled”.
-### Change, save the file and then Reboot the System
+#### Change “SELINUX=enforcing” to “SELINUX=disabled”.
+#### Change, save the file and then Reboot the System
 ```
 sudo Reboot
 ```
-### Download Prometheus package
-### Go to official Prometheus downloads page, and copy the URL of the Linux “tar” file.
-### Run the following command to download the package. Paste the copied URL after wget in the below command:
+#### Download Prometheus package
+#### Go to official Prometheus downloads page, and copy the URL of the Linux “tar” file.
+#### Run the following command to download the package. Paste the copied URL after wget in the below command:
 ```
 wget https://github.com/prometheus/prometheus/releases/download/v2.17.2/prometheus-2.17.2.linux-amd64.tar.gz
 ```
-### Create a Prometheus user, required directories, and make Prometheus the user as the owner of those directories.
+#### Create a Prometheus user, required directories, and make Prometheus the user as the owner of those directories.
 ```
 sudo useradd --no-create-home --shell /bin/false prometheus
 ```
@@ -33,15 +33,15 @@ sudo chown prometheus:prometheus /etc/prometheus
 ```
 sudo chown prometheus:prometheus /var/lib/prometheus
 ```
-### Now go to Prometheus downloaded location and extract it.
+#### Now go to Prometheus downloaded location and extract it.
 ```
 sudo tar -xvzf prometheus-2.17.2.linux-amd64.tar.gz
 ```
-### Rename it as per your preference.
+#### Rename it as per your preference.
 ```
 sudo mv prometheus-2.17.2.linux-amd64 prometheuspkg
 ```
-### Move the consoles and console_libraries directories from prometheuspkg to /etc/prometheus folder and change the ownership to prometheus user.
+#### Move the consoles and console_libraries directories from prometheuspkg to /etc/prometheus folder and change the ownership to prometheus user.
 ```
 sudo cp -r prometheuspkg/consoles /etc/prometheus
 ```
@@ -54,23 +54,23 @@ sudo chown -R prometheus:prometheus /etc/prometheus/consoles
 ```
 sudo chown -R prometheus:prometheus /etc/prometheus/console_libraries
 ```
-### Copy prometheus and promtool binary from the prometheuspkg folder to /usr/local/bin
+#### Copy prometheus and promtool binary from the prometheuspkg folder to /usr/local/bin
 ```
 sudo cp prometheuspkg/prometheus /usr/local/bin/
 ```
 ```
 sudo cp prometheuspkg/promtool /usr/local/bin/
 ```
-### Change the ownership to Prometheus user.
+#### Change the ownership to Prometheus user.
 ```
 sudo chown prometheus:prometheus /usr/local/bin/prometheus
 ```
 ```
 sudo chown prometheus:prometheus /usr/local/bin/promtool 
 ```
-### Add and modify the Prometheus Configuration file.
+#### Add and modify the Prometheus Configuration file.
 
-### Now we will create the prometheus.yml file.
+#### Now we will create the prometheus.yml file.
 ```
 sudo vi /etc/prometheus/prometheus.yml
 
@@ -87,7 +87,7 @@ scrape_configs:
 ```
 sudo chown prometheus:prometheus /etc/prometheus/prometheus.yml
 ```
-### Configure the Prometheus Service File.
+#### Configure the Prometheus Service File.
 ```
 sudo vi /etc/systemd/system/prometheus.service
 
@@ -127,7 +127,7 @@ sudo systemctl status prometheus
 ```
 http://<prometheus-ip>:9090/graph
 ```
-### Configure Node Exporter on Centos
+## Configure Node Exporter on Centos
 
 ##### node_exporter is an exporter of machine metrics that can run on *Nix and Linux system.
 
@@ -179,7 +179,7 @@ Sudo systemctl status node_exporter
 ```
 sudo systemctl enable node_exporter
 ```
-### Access Node_Exporter Web UI
+#### Access Node_Exporter Web UI
 
 #### Now you will be able to access the Node_Exporter on 9100 port. Make sure that port 9100 is open for web interface.
 
@@ -187,7 +187,7 @@ http://IP-Address:9100/metrics
 
 metrics look like this
 
-### Now add Node_Exporter to the target Prometheus server
+#### Now add Node_Exporter to the target Prometheus server
 #### Login to the Prometheus server(server1) and open the prometheus.yml file.
 
 sudo vi /etc/prometheus/prometheus.yml
