@@ -26,7 +26,6 @@ wget https://github.com/prometheus/prometheus/releases/download/v2.17.2/promethe
 ```
 ### Create a Prometheus user, required directories, and make Prometheus the user as the owner of those directories.
 ```
-```
 sudo useradd --no-create-home --shell /bin/false prometheus
 ```
 ```
